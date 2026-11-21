@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <title>🍙</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+      -webkit-touch-callout: none;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #f8efdc;
+      touch-action: none;
+    }
+    #app {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    canvas#scene {
+      display: block;
+      width: 100%;
+      height: 100%;
+      touch-action: none;
+    }
+    /* Subtle Japanese watercolor paper texture overlay */
+    #paper-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      mix-blend-mode: multiply;
+      opacity: 0.17;
+      background-repeat: repeat;
+      background-size: 320px 320px;
+    }
+    /* Soft picture-book warm vignette frame */
+    #vignette {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      box-shadow: inset 0 0 70px rgba(138, 102, 74, 0.18);
+    }
+    /* Soft sunny watercolor curtain for kitchen <-> picnic transition */
+    #transition-wash {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(circle at 50% 50%, #fffaf0 0%, #fcebd2 65%, #f4d9b6 100%);
+      opacity: 0;
+      transition: opacity 0.48s ease-in-out;
+    }
+  </style>
+<script src="../../gf-playlog.js" defer></script>
+</head>
+<body>
+  <div id="app">
+    <canvas id="scene"></canvas>
+    <div id="paper-overlay"></div>
+    <div id="vignette"></div>
+    <div id="transition-wash"></div>
+  </div>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
