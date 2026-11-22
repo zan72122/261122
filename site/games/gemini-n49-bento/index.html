@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>Bento</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+      -webkit-touch-callout: none;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #14181f;
+      touch-action: none;
+    }
+    #app {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+    canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+      touch-action: none;
+    }
+    /* Minimal zero-text optical controls */
+    .hud {
+      position: fixed;
+      top: max(14px, env(safe-area-inset-top));
+      right: max(14px, env(safe-area-inset-right));
+      display: flex;
+      gap: 10px;
+      z-index: 10;
+      pointer-events: none;
+    }
+    .icon-btn {
+      pointer-events: auto;
+      width: 52px;
+      height: 52px;
+      border-radius: 999px;
+      border: 1.5px solid rgba(255, 255, 255, 0.42);
+      background: rgba(24, 28, 34, 0.34);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.28);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      padding: 0;
+      transition: transform 0.16s cubic-bezier(0.22, 1, 0.36, 1), background 0.2s ease, opacity 0.35s ease;
+    }
+    .icon-btn:active {
+      transform: scale(0.9);
+    }
+    .icon-btn.active {
+      background: rgba(255, 236, 200, 0.85);
+      border-color: rgba(255, 255, 255, 0.9);
+    }
+    .icon-btn svg {
+      width: 26px;
+      height: 26px;
+      stroke: #fff;
+      fill: none;
+      stroke-width: 1.9;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: stroke 0.2s ease;
+    }
+    .icon-btn.active svg {
+      stroke: #2c2118;
+    }
+    #btn-replay {
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(0.75);
+    }
+    #btn-replay.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: scale(1);
+    }
+  </style>
+<script src="../../gf-playlog.js" defer></script>
+</head>
+<body>
+  <div id="app"></div>
+  <div class="hud">
+    <button id="btn-camera" class="icon-btn" aria-label="Camera">
+      <svg viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="8.5" />
+        <circle cx="12" cy="12" r="3.4" />
+        <line x1="12" y1="3.5" x2="12" y2="6.2" />
+        <line x1="12" y1="17.8" x2="12" y2="20.5" />
+        <line x1="3.5" y1="12" x2="6.2" y2="12" />
+        <line x1="17.8" y1="12" x2="20.5" y2="12" />
+      </svg>
+    </button>
+    <button id="btn-replay" class="icon-btn" aria-label="Replay">
+      <svg viewBox="0 0 24 24">
+        <path d="M4.5 12a7.5 7.5 0 1 1 2.2 5.3" />
+        <polyline points="4.5 7.5 4.5 12 9 12" />
+      </svg>
+    </button>
+  </div>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
